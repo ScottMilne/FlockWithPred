@@ -23,6 +23,6 @@ void setup(){
 
 /** Draws Frames */
 void draw(){
-  //background(255, 204, 0);
-
+  background(0, 111, 145);
+  school.run();
 }
