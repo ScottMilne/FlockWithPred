@@ -17,7 +17,7 @@ class Prey {
 
     position = new PVector(random(width), random(height));
     r = 2.0;
-    maxspeed = 2;
+    maxspeed = 2.5;
     maxforce = 0.03;
   }
   
@@ -203,9 +203,9 @@ class Prey {
       PVector repelVec = PVector.sub(position, obstacle);
       repelVec.normalize();
         if (d != 0) { //Don't divide by zero.
-          float scale = 7.0/d; //The closer to the obstacle, the stronger the force.
+          float scale = 2.0/d; //The closer to the obstacle, the stronger the force.
           repelVec.normalize();
-          repelVec.mult(maxforce*7);
+          repelVec.mult(maxforce*15);
         if (repelVec.mag()<0) { //Don't let the boids turn around to avoid the obstacle.
           repelVec.y = 0;
         }
@@ -216,7 +216,7 @@ class Prey {
   
     void applyF(PVector force) {
     //F=ma
-    force.div(10);
+    force.div(5);
     acceleration.add(force);
   }
   

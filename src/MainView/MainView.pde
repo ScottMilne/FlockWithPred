@@ -8,11 +8,11 @@ Hunters hunters;
 
 /** Loads app */
 void setup(){
-  size(1000, 600);
-  
+  //size(1000, 600);
+  fullScreen(2);
   //number of entities on screen
-  int preyNumber = 100;
-  int predNumber = 5;
+  int preyNumber = 400;
+  int predNumber = 10;
   
   school = new School();
   hunters = new Hunters();
