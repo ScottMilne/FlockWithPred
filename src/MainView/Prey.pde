@@ -2,23 +2,22 @@ class Prey {
   
   PVector acceleration;
   PVector velocity;
-  PVector location;
   PVector position;
   float r;
   float maxforce;
   float maxspeed;   
+  float mass = 10;
   
   Prey(float x, float y){
     acceleration = new PVector(0, 0);
     velocity = PVector.random2D();
-    location = new PVector();
 
     float angle = random(TWO_PI);
     velocity = new PVector(cos(angle), sin(angle));
 
-    position = new PVector(x, y);
+    position = new PVector(random(width), random(height));
     r = 2.0;
-    maxspeed = 2;
+    maxspeed = 2.5;
     maxforce = 0.03;
   }
   
@@ -193,6 +192,32 @@ class Prey {
     PVector steer = PVector.sub(desired, velocity);
     steer.limit(maxforce);  // Limit to maximum steering force
     return steer;
+  }
+  
+  void repelForce(PVector obstacle, float radius){
+    PVector futPos = PVector.add(position, velocity); //Calculate future position for more effective behavior.
+    PVector dist = PVector.sub(obstacle, futPos);
+    float d = dist.mag();
+    
+    if(d<=radius){
+      PVector repelVec = PVector.sub(position, obstacle);
+      repelVec.normalize();
+        if (d != 0) { //Don't divide by zero.
+          float scale = 2.0/d; //The closer to the obstacle, the stronger the force.
+          repelVec.normalize();
+          repelVec.mult(maxforce*15);
+        if (repelVec.mag()<0) { //Don't let the boids turn around to avoid the obstacle.
+          repelVec.y = 0;
+        }
+      }
+      applyF(repelVec);
+    }
+  }
+  
+    void applyF(PVector force) {
+    //F=ma
+    force.div(5);
+    acceleration.add(force);
   }
   
   

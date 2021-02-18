@@ -11,9 +11,11 @@ class School{
   
   void run(){
     for(Prey p: prey){
+        //for (Pred pred: preds) { 
+        //PVector predBoid = pred.getLoc();
+        //p.repelForce(predBoid, obstRad);
+      //}
       p.run(prey);
     }
-  
   }
-  
 }
