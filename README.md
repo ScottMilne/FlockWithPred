@@ -13,6 +13,7 @@
 The app is a flocking algorithm in which there are two groups of boids. One group is the prey and the other the predators.
 The predators have an attraction to the prey, while the prey have a repulsion to the predators. This gives the effect of chasing
 
+<img src = "img/Boids.gif"></img>
 
 ### Built With
 
