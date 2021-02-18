@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h1 align="center">FlockWithPred</h1>
+  <h1 align="center">FlockWithPred 🐟 🦈</h1>
 
   <p align="center">
     Flocking algorithm with predator/prey behaviour 
